@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../utils';
-
+import '../App.css';
 function Signup() {
 
     const [signupInfo, setSignupInfo] = useState({
@@ -27,7 +27,7 @@ function Signup() {
             return handleError('name, email and password are required')
         }
         try {
-            const url = `https://deploy-mern-app-1-api.vercel.app/auth/signup`;
+            const url = `http://localhost:8080/auth/signup`;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -39,9 +39,7 @@ function Signup() {
             const { success, message, error } = result;
             if (success) {
                 handleSuccess(message);
-                setTimeout(() => {
-                    navigate('/login')
-                }, 1000)
+                navigate('/login')
             } else if (error) {
                 const details = error?.details[0].message;
                 handleError(details);
