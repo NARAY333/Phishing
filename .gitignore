@@ -7,6 +7,14 @@
 .pnp.js
 /backend/.venv
 
+# environment variables
+backend/.env
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # testing
 /coverage
 
